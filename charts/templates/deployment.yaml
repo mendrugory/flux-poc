@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebserver
+  namespace: mynamespace
+spec:
+  selector:
+    matchLabels:
+      app: mywebserver
+  template:
+    metadata:
+      labels:
+        app: mywebserver
+    spec:
+      containers:
+      - name: mywebserver
+        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80
+          name: web
