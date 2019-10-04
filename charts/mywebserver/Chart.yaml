@@ -1,4 +1,4 @@
-name: nginx
+name: mywebserver
 description: A basic HTTP server
 version: 0.1.0
 keywords:
