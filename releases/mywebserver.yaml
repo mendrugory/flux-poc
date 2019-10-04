@@ -1,0 +1,17 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: mywebserver
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: ghost
+  chart:
+    git: ssh://git@github.com/mendrugory/flux-get-started
+    ref: master
+    path: charts/mywebserver
+  values:
+    image: 
+      name: nginx
+      tag: 1.17.3
