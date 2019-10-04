@@ -6,9 +6,9 @@ metadata:
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  releaseName: ghost
+  releaseName: mywebserver
   chart:
-    git: ssh://git@github.com/mendrugory/flux-get-started
+    git: ssh://git@github.com/mendrugory/flux-poc
     ref: master
     path: charts/mywebserver
   values:
