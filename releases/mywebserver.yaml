@@ -13,5 +13,5 @@ spec:
     path: charts/mywebserver
   values:
     image: 
-      name: nginx 
+      name: httpd 
       tag: latest
