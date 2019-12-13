@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: mywebserver2
   namespace: default
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   releaseName: mywebserver2
   targetNamespace: default
