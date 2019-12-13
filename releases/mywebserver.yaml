@@ -8,10 +8,6 @@ metadata:
 spec:
   releaseName: mywebserver
   chart:
-    git: ssh://git@github.com/mendrugory/flux-poc
-    ref: master
-    path: charts/mywebserver
-  values:
-    image: 
-      name: nginx 
-      tag: latest
+    repository: https://charts.jfrog.io/
+    name: artifactory
+    version: 8.3.0
