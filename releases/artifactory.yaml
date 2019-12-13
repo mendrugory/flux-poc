@@ -1,0 +1,13 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: artifactory
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: artifactory
+  chart:
+    repository: https://charts.jfrog.io/
+    name: artifactory
+    version: 8.3.0
