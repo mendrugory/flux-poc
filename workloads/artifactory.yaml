@@ -25,13 +25,13 @@ spec:
           name: http
         livenessProbe:
           httpGet:
-            path: /artifactory/webapp/
+            path: /artifactory/webapp/#/login
             port: 8081
           failureThreshold: 1
           periodSeconds: 10
         readinessProbe:
           httpGet:
-            path: /artifactory/webapp/
+            path: /artifactory/webapp/#/login
             port: 8081
           failureThreshold: 1
           periodSeconds: 10          
