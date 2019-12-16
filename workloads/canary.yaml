@@ -1,0 +1,47 @@
+apiVersion: flagger.app/v1alpha3
+kind: Canary
+metadata:
+  name: artifactory
+  namespace: default
+spec:
+  provider: istio
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: artifactory
+  progressDeadlineSeconds: 60
+  service:
+    port: 8081
+    portName: http
+    targetPort: 8081
+    portDiscovery: false
+  skipAnalysis: false
+  canaryAnalysis:
+    interval: 1m
+    # max number of failed metric checks before rollback
+    threshold: 10
+    # max traffic percentage routed to canary
+    # percentage (0-100)
+    maxWeight: 50
+    # canary increment step
+    # percentage (0-100)
+    stepWeight: 5
+    # Prometheus checks
+    metrics:
+    - name: request-success-rate
+      # minimum req success rate (non 5xx responses)
+      # percentage (0-100)
+      threshold: 99
+      interval: 1m
+    - name: request-duration
+      # maximum req duration P99
+      # milliseconds
+      threshold: 500
+      interval: 30s
+    # testing (optional)
+    webhooks:
+      - name: load-test
+        url: http://flagger-loadtester.default/
+        timeout: 5s
+        metadata:
+          cmd: "hey -z 1m -q 10 -c 2 http://artifactory.default:8081/artifactory/webapp/#/login"
