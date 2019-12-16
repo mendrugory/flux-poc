@@ -17,7 +17,7 @@ spec:
     portDiscovery: false
   skipAnalysis: false
   canaryAnalysis:
-    interval: 1m
+    interval: 30s
     # max number of failed metric checks before rollback
     threshold: 10
     # max traffic percentage routed to canary
