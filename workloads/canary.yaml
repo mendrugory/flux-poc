@@ -25,7 +25,7 @@ spec:
     maxWeight: 50
     # canary increment step
     # percentage (0-100)
-    stepWeight: 5
+    stepWeight: 10
     # Prometheus checks
     metrics:
     - name: request-success-rate
@@ -44,4 +44,4 @@ spec:
         url: http://flagger-loadtester.default/
         timeout: 5s
         metadata:
-          cmd: "hey -z 1m -q 10 -c 2 http://artifactory.default:8081/artifactory/webapp/#/login"
+          cmd: "hey -z 1m -q 10 -c 2 http://artifactory.default:8081/artifactory/webapp/"
