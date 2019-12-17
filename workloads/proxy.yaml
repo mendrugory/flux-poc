@@ -48,11 +48,11 @@ spec:
       labels:
         app: proxy
       annotations:
-        kubernetes.io/change-cause: "First Commit"           
+        kubernetes.io/change-cause: "nginx:latest"           
     spec:
       containers:
       - name: proxy
-        image: nginx:1.16.0
+        image: nginx:latest
         ports:
         - containerPort: 80
           name: http       
@@ -76,6 +76,6 @@ spec:
     app: proxy
   ports:
   - name: http
-    port: 80
+    port: 8080
     targetPort: http       
-  type: ClusterIP
+  type: LoadBalancer
