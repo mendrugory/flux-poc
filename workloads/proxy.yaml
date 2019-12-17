@@ -79,4 +79,4 @@ spec:
   - name: http
     port: 80
     targetPort: http       
-  type: NodePort    
+  type: LoadBalancer    
