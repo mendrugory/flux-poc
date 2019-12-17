@@ -15,7 +15,7 @@ spec:
       labels:
         app: artifactory
       annotations:
-        sidecar.istio.io/rewriteAppHTTPProbers: "true"      
+        # sidecar.istio.io/rewriteAppHTTPProbers: "true"      
         kubernetes.io/change-cause: "Update to 6.16.0"           
     spec:
       containers:
