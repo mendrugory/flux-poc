@@ -34,7 +34,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: default
+  namespace: proxy
   name: proxy
   labels:
     app: proxy
@@ -68,7 +68,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: proxy
-  namespace: default
+  namespace: proxy
   labels:
     app: proxy
 spec:
