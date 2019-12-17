@@ -7,7 +7,7 @@ data:
   artifactory.conf: |-
     ## server configuration
     server {
-        listen 80 ;
+        listen 80 http2;
         
         server_name artifactory.jfrog.com;
         if ($http_x_forwarded_proto = '') {
