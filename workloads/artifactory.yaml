@@ -15,8 +15,7 @@ spec:
       labels:
         app: artifactory
       annotations:
-        # sidecar.istio.io/rewriteAppHTTPProbers: "true"    
-        flux.weave.works/automated: "false"  
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"   
         kubernetes.io/change-cause: "Update to 6.15.1"           
     spec:
       containers:
@@ -24,9 +23,7 @@ spec:
         image: docker.bintray.io/jfrog/artifactory-pro:6.15.1
         ports:
         - containerPort: 8081
-          name: http
-        - containerPort: 15020
-          name: ready          
+          name: http        
         resources: 
           requests:
             memory: "2Gi"
@@ -34,33 +31,33 @@ spec:
           limits:
             memory: "4Gi"
             cpu: "2"          
-        # readinessProbe:
-        #   httpGet:
-        #     path: '/healthz/ready'
-        #     port: 15020
-        #   initialDelaySeconds: 60
-        #   failureThreshold: 10
-        #   timeoutSeconds: 10
-        #   periodSeconds: 10
-        #   successThreshold: 1
-        # livenessProbe:
-        #   httpGet:
-        #     path: '/artifactory/webapp/#/login'
-        #     port: 15020
-        #   initialDelaySeconds: 90
-        #   failureThreshold: 10
-        #   timeoutSeconds: 10
-        #   periodSeconds: 10
-        #   successThreshold: 1         
-        # startupProbe:
-        #   httpGet:
-        #     path: '/artifactory/webapp/#/login'
-        #     port: 8081
-        #   initialDelaySeconds: 120
-        #   failureThreshold: 10
-        #   timeoutSeconds: 10
-        #   periodSeconds: 10
-        #   successThreshold: 1            
+        readinessProbe:
+          httpGet:
+            path: '/artifactory/webapp/#/login'
+            port: 8081
+          initialDelaySeconds: 60
+          failureThreshold: 10
+          timeoutSeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+        livenessProbe:
+          httpGet:
+            path: '/artifactory/webapp/#/login'
+            port: 8081
+          initialDelaySeconds: 90
+          failureThreshold: 10
+          timeoutSeconds: 10
+          periodSeconds: 10
+          successThreshold: 1         
+        startupProbe:
+          httpGet:
+            path: '/artifactory/webapp/#/login'
+            port: 8081
+          initialDelaySeconds: 120
+          failureThreshold: 10
+          timeoutSeconds: 10
+          periodSeconds: 10
+          successThreshold: 1            
 ---          
 apiVersion: v1
 kind: Service
