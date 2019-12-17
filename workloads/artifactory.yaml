@@ -15,7 +15,7 @@ spec:
       labels:
         app: artifactory
       annotations:
-        sidecar.istio.io/rewriteAppHTTPProbers: "true"      
+        # sidecar.istio.io/rewriteAppHTTPProbers: "true"      
         kubernetes.io/change-cause: "Update to 6.16.0"           
     spec:
       containers:
@@ -24,6 +24,8 @@ spec:
         ports:
         - containerPort: 8081
           name: http
+        - containerPort: 15020
+          name: ready          
         resources: 
           requests:
             memory: "2Gi"
@@ -31,15 +33,15 @@ spec:
           limits:
             memory: "4Gi"
             cpu: "2"          
-        readinessProbe:
-          httpGet:
-            path: '/healthz/ready'
-            port: 15020
-          initialDelaySeconds: 60
-          failureThreshold: 10
-          timeoutSeconds: 10
-          periodSeconds: 10
-          successThreshold: 1
+        # readinessProbe:
+        #   httpGet:
+        #     path: '/healthz/ready'
+        #     port: 15020
+        #   initialDelaySeconds: 60
+        #   failureThreshold: 10
+        #   timeoutSeconds: 10
+        #   periodSeconds: 10
+        #   successThreshold: 1
         # livenessProbe:
         #   httpGet:
         #     path: '/artifactory/webapp/#/login'
