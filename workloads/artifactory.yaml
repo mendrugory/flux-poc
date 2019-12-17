@@ -15,12 +15,13 @@ spec:
       labels:
         app: artifactory
       annotations:
-        # sidecar.istio.io/rewriteAppHTTPProbers: "true"      
-        kubernetes.io/change-cause: "Update to 6.16.0"           
+        # sidecar.istio.io/rewriteAppHTTPProbers: "true"    
+        flux.weave.works/automated: "false"  
+        kubernetes.io/change-cause: "Update to 6.15.1"           
     spec:
       containers:
       - name: artifactory
-        image: docker.bintray.io/jfrog/artifactory-pro:6.16.0
+        image: docker.bintray.io/jfrog/artifactory-pro:6.15.1
         ports:
         - containerPort: 8081
           name: http
