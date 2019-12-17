@@ -2,12 +2,12 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: proxy-config
-  namespace: default
+  namespace: proxy
 data:
   artifactory.conf: |-
     ## server configuration
     server {
-        listen 80 http2;
+        listen 80 http2 ipv6only=on;
         
         if ($http_x_forwarded_proto = '') {
             set $http_x_forwarded_proto  $scheme;
