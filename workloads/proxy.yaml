@@ -9,7 +9,7 @@ data:
     server {
         listen 80;
         
-        server_name artifactory.jfrog.com;
+        #server_name artifactory.jfrog.com;
         if ($http_x_forwarded_proto = '') {
             set $http_x_forwarded_proto  $scheme;
         }
