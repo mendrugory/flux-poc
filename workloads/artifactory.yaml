@@ -16,11 +16,11 @@ spec:
         app: artifactory
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"   
-        kubernetes.io/change-cause: "Update to 6.15.1"           
+        kubernetes.io/change-cause: "Update to 6.16.0"           
     spec:
       containers:
       - name: artifactory
-        image: docker.bintray.io/jfrog/artifactory-pro:6.15.1
+        image: docker.bintray.io/jfrog/artifactory-pro:6.16.0
         ports:
         - containerPort: 8081
           name: http        
